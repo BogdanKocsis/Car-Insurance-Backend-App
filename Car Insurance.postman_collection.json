@@ -1,0 +1,313 @@
+{
+	"info": {
+		"_postman_id": "d55c54fc-cf1f-4cb4-8dbf-73b07d9d3366",
+		"name": "Car Insurance",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "12997478"
+	},
+	"item": [
+		{
+			"name": "List cars",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:18080/api/cars",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "18080",
+					"path": [
+						"api",
+						"cars"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Check insurance validity – valid case",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:18080/api/cars/1/insurance-valid?date=2025-06-01",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "18080",
+					"path": [
+						"api",
+						"cars",
+						"1",
+						"insurance-valid"
+					],
+					"query": [
+						{
+							"key": "date",
+							"value": "2025-06-01"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Insurance validity – no active policy",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:18080/api/cars/1/insurance-valid?date=2023-01-01",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "18080",
+					"path": [
+						"api",
+						"cars",
+						"1",
+						"insurance-valid"
+					],
+					"query": [
+						{
+							"key": "date",
+							"value": "2023-01-01"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Insurance validity – car does not exist",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:18080/api/cars/999/insurance-valid?date=2025-06-01",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "18080",
+					"path": [
+						"api",
+						"cars",
+						"999",
+						"insurance-valid"
+					],
+					"query": [
+						{
+							"key": "date",
+							"value": "2025-06-01"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Insurance validity – invalid date format",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:18080/api/cars/1/insurance-valid?date=01-06-2025",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "18080",
+					"path": [
+						"api",
+						"cars",
+						"1",
+						"insurance-valid"
+					],
+					"query": [
+						{
+							"key": "date",
+							"value": "01-06-2025"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Insurance validity – date out of range",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:18080/api/cars/1/insurance-valid?date=1800-01-01",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "18080",
+					"path": [
+						"api",
+						"cars",
+						"1",
+						"insurance-valid"
+					],
+					"query": [
+						{
+							"key": "date",
+							"value": "1800-01-01"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create insurance claim",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"insuranceClaimDate\": \"2025-06-15\",\r\n  \"description\": \"Broken windshield\",\r\n  \"amount\": 1200.50\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:18080/api/cars/1/claims",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "18080",
+					"path": [
+						"api",
+						"cars",
+						"1",
+						"claims"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create insurance claim – car not found",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"insuranceClaimDate\": \"2025-06-15\",\r\n  \"description\": \"Broken windshield\",\r\n  \"amount\": 1200.50\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:18080/api/cars/999/claims",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "18080",
+					"path": [
+						"api",
+						"cars",
+						"999",
+						"claims"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create insurance claim – invalid body",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"insuranceClaimDate\": \"2030-01-01\",\r\n  \"description\": \"\",\r\n  \"amount\": -100\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:18080/api/cars/1/claims",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "18080",
+					"path": [
+						"api",
+						"cars",
+						"1",
+						"claims"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get car history",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:18080/api/cars/1/history",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "18080",
+					"path": [
+						"api",
+						"cars",
+						"1",
+						"history"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get car history - car not found",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:18080/api/cars/999/history",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "18080",
+					"path": [
+						"api",
+						"cars",
+						"999",
+						"history"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

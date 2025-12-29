@@ -1,0 +1,48 @@
+package com.example.car_insurance.model;
+
+import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
+
+import java.time.LocalDate;
+
+@Entity
+@Table(name = "insurance_policy")
+public class InsurancePolicy {
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @NotNull
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    @JoinColumn(name = "car_id", nullable = false)
+    private Car car;
+
+    private String provider;
+
+    @NotNull(message = "Start Date must not be null")
+    @Column(name = "start_date", nullable = false)
+    private LocalDate startDate;
+
+    @NotNull(message = "End Date must not be null")
+    @Column(name = "end_date", nullable = false)
+    private LocalDate endDate;
+
+    @Column(nullable = false)
+    private boolean expiryNotified = false;
+
+    public InsurancePolicy() {}
+    public InsurancePolicy(Car car, String provider, LocalDate startDate, LocalDate endDate) {
+        this.car = car; this.provider = provider; this.startDate = startDate; this.endDate = endDate;
+    }
+
+    public Long getId() { return id; }
+    public Car getCar() { return car; }
+    public void setCar(Car car) { this.car = car; }
+    public String getProvider() { return provider; }
+    public void setProvider(String provider) { this.provider = provider; }
+    public LocalDate getStartDate() { return startDate; }
+    public void setStartDate(LocalDate startDate) { this.startDate = startDate; }
+    public LocalDate getEndDate() { return endDate; }
+    public void setEndDate(LocalDate endDate) { this.endDate = endDate; }
+    public boolean isExpiryNotified() { return expiryNotified; }
+    public void setExpiryNotified(boolean expiryNotified) { this.expiryNotified = expiryNotified; }
+}

@@ -2,9 +2,19 @@
 <project version="4">
   <component name="RemoteRepositoriesConfiguration">
     <remote-repository>
+      <option name="id" value="endava-nexus" />
+      <option name="name" value="Endava Xelerator Repository" />
+      <option name="url" value="https://nexus.endava.com/repository/xelerator" />
+    </remote-repository>
+    <remote-repository>
       <option name="id" value="central" />
       <option name="name" value="Central Repository" />
       <option name="url" value="https://repo.maven.apache.org/maven2" />
+    </remote-repository>
+    <remote-repository>
+      <option name="id" value="endavaNexus" />
+      <option name="name" value="Endava Xelerator Repository" />
+      <option name="url" value="https://nexus.endava.com/repository/xelerator" />
     </remote-repository>
     <remote-repository>
       <option name="id" value="central" />

@@ -1,11 +1,12 @@
-INSERT INTO owner (id, name, email) VALUES (1, 'Ana Pop', 'ana.pop@example.com');
-INSERT INTO owner (id, name, email) VALUES (2, 'Bogdan Ionescu', 'bogdan.ionescu@example.com');
+INSERT INTO owner ( name, email) VALUES ('Unknown Owner', 'unknow.owner@example.com');
+INSERT INTO owner ( name, email) VALUES ('Ana Pop', 'ana.pop@example.com');
+INSERT INTO owner ( name, email) VALUES ('Bogdan Ionescu', 'bogdan.ionescu@example.com');
 
-INSERT INTO car (id, vin, make, model, year_of_manufacture, owner_id) VALUES (1, 'VIN12345', 'Dacia', 'Logan', 2018, 1);
-INSERT INTO car (id, vin, make, model, year_of_manufacture, owner_id) VALUES (2, 'VIN67890', 'VW', 'Golf', 2021, 2);
+INSERT INTO car (vin, make, model, year_of_manufacture, owner_id) VALUES ('VIN12345', 'Dacia', 'Logan', 2018, 2);
+INSERT INTO car (vin, make, model, year_of_manufacture, owner_id) VALUES ('VIN67890', 'VW', 'Golf', 2021, 3);
 
-INSERT INTO insurancepolicy (id, car_id, provider, start_date, end_date, expiry_notified) VALUES (1, 1, 'Allianz', DATE '2024-01-01', DATE '2024-12-31', false);
-INSERT INTO insurancepolicy (id, car_id, provider, start_date, end_date, expiry_notified) VALUES (2, 1, 'Groupama', DATE '2025-01-01', DATE '2025-08-31', false);
-INSERT INTO insurancepolicy (id, car_id, provider, start_date, end_date, expiry_notified) VALUES (3, 2, 'Allianz', DATE '2025-03-01', DATE '2025-08-31', false);
+INSERT INTO insurance_policy (car_id, provider, start_date, end_date, expiry_notified) VALUES (1, 'Allianz', DATE '2024-01-01', DATE '2024-12-31', false);
+INSERT INTO insurance_policy (car_id, provider, start_date, end_date, expiry_notified) VALUES (1, 'Groupama', DATE '2025-01-01', DATE '2025-08-31', false);
+INSERT INTO insurance_policy (car_id, provider, start_date, end_date, expiry_notified) VALUES (2, 'Allianz', DATE '2025-03-01', DATE '2025-08-31', false);
 
-INSERT INTO insuranceclaim (id, car_id, claim_date, description, amount) VALUES (1, 1, DATE '2025-06-10', 'Accident', 850.00);
+INSERT INTO insurance_claim (car_id, claim_date, description, amount) VALUES 1, DATE '2025-06-10', 'Accident', 850.00);
