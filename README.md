@@ -1,11 +1,14 @@
 # Car Insurance Project
 
+This project was developed as a technical challenge for a job interview.
+Its goal is to demonstrate practical skills in Java, Spring Boot, REST API design, validation, persistence, and testing, following production-quality practices.
+
 ## 1) Requirements (Software)
 
 - **JDK 21**
 - **Maven 3.9+**
 - Any IDE (IntelliJ IDEA / VS Code with Java extension / Eclipse)
-- Optional: **curl** or **Postman** for API testing
+- Optional: **curl** or **Postman** for API testing (A Postman collection with example API calls is included)
 
 ## 2) How to Run
 
